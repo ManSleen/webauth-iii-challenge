@@ -5,7 +5,7 @@ const Departments = require("./departments-model.js");
 const restricted = require("../auth/restricted-middleware.js");
 
 // Write CRUD operations
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   Departments.find()
     .then(departments => {
       res.json(departments);
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   let department = req.body;
   Departments.add(department)
     .then(department => {

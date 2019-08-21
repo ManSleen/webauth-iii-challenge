@@ -18,6 +18,6 @@ module.exports = (req, res, next) => {
       }
     });
   } else {
-    res.status(400).json({ message: "arghhhh!" });
+    res.status(400).json({ message: "user be logged in to do that!" });
   }
 };

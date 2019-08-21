@@ -5,7 +5,7 @@ const Positions = require("./positions-model.js");
 const restricted = require("../auth/restricted-middleware.js");
 
 // Write CRUD operations
-router.get("/", (req, res) => {
+router.get("/", restricted, (req, res) => {
   Positions.find()
     .then(positions => {
       res.json(positions);
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.post("/", (req, res) => {
+router.post("/", restricted, (req, res) => {
   let position = req.body;
   Positions.add(position)
     .then(position => {
